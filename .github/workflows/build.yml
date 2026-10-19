@@ -118,7 +118,7 @@ jobs:
       working-directory: ./LuaJIT/src
       run: msvcbuild.bat amalg
     - name: Configure
-      run: cmake -Bbuild -S. -DCMAKE_INSTALL_PREFIX=%CD%\install -A ${{ matrix.arch }} -DLUA_INCLUDE_DIR=%CD%\LuaJIT\src -DLUA_LIBRARIES=%CD%\LuaJIT\src\lua51.lib
+      run: cmake -Bbuild -S. -DCMAKE_INSTALL_PREFIX=%CD%\install -A ${{ matrix.arch }} -DLUA_INCLUDE_DIR=%CD%\LuaJIT\src -DLUA_LIBRARIES=%CD%\LuaJIT\src\lua51.lib -DCMAKE_POLICY_DEFAULT_CMP0091=NEW -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
     - name: Build
       run: cmake --build build --config Release --target install
     - name: Test
